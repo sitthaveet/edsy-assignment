@@ -27,7 +27,7 @@ const Timer = ({ onTimeOut, onExamFinish }) => {
     
     // render the timer
     return (
-        <div className="badge badge-accent text-secondary text-right mr-7">⏰ Time Remaining: {minutes}:{seconds}</div>
+        <div className="badge badge-accent text-secondary text-right mr-7 p-3">⏰ Time remaining: {minutes}:{seconds}</div>
     );
 };
 

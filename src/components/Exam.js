@@ -37,7 +37,8 @@ const Exam = ({ onNextPage }) => {
     const nonSelectedStyle = 'badge block my-5 w-full border-gray-200 py-5 hover:bg-gray-100 flex items-center justify-start ';
 
 
-    // timer function
+    // progress bar based on the state of the currentQuestion and the length of the questionsData-1
+    const progress = ((currentQuestion + 1) / questionsData.questions.length ) * 100;
 
     
 
@@ -83,6 +84,10 @@ const Exam = ({ onNextPage }) => {
                 <p className="text-secondary text-left ml-7 font-bold"> Multiple Choice</p>
                 <Timer />
             </div>
+            <div className='container flex'>
+                <progress className='progress progress-secondary mx-7 my-2' value={progress} max="100"></progress>
+            </div>
+
             <form onSubmit={onSubmit}>
                 <Question
                 question={question}
