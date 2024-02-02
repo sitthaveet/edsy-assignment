@@ -31,5 +31,4 @@ const Timer = ({ onTimeOut, onExamFinish }) => {
     );
 };
 
-
 export default Timer;
