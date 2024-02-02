@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import questionsData from '../assets/questions.json';
+import Timer from './Timer';
 
 const Exam = ({ onNextPage }) => {
 
@@ -35,6 +36,12 @@ const Exam = ({ onNextPage }) => {
     const selectedStyle = 'badge badge-accent text-primary block my-5 w-full border-gray-200 py-5 flex items-center justify-start';
     const nonSelectedStyle = 'badge block my-5 w-full border-gray-200 py-5 hover:bg-gray-100 flex items-center justify-start ';
 
+
+    // timer function
+
+    
+
+
     // define onSubmit function
     const onSubmit = () => {
         console.log(selectedOptions);
@@ -67,18 +74,24 @@ const Exam = ({ onNextPage }) => {
         );
       };
 
+   
+
     return (
 
         <div className='my-7'>
+            <div className='flex justify-between'>
+                <p className="text-secondary text-left ml-7 font-bold"> Multiple Choice</p>
+                <Timer />
+            </div>
             <form onSubmit={onSubmit}>
                 <Question
                 question={question}
                 selectedOption={selectedOptions[currentQuestion]}
                 />
-                <div className="buttons flex mt-10 justify-between">
+                <div className="buttons flex justify-between">
                     {/* Back button for all pages except the first question */}
                     {currentQuestion > 0 && (
-                        <div className="justify-start ml-7">
+                        <div className="justify-start mt-10 ml-7">
                             <button className='btn btn-primary my-3 ' type='button' onClick={onPrevQuestion}>
                             Back
                             </button>
@@ -87,7 +100,7 @@ const Exam = ({ onNextPage }) => {
                     {/* Next button for all pages except the last question */}
                     {currentQuestion < questionsData.questions.length - 1 && currentQuestion > 0 && (
                         
-                        <div className="justify-end mr-7">
+                        <div className="justify-end mt-10 mr-7">
                             <button className='btn btn-primary my-3' type='button'  onClick={onNextQuestion}>
                                 Next
                             </button>
@@ -95,14 +108,14 @@ const Exam = ({ onNextPage }) => {
                     )}
                     {/* Last question must be submit button */}
                     {currentQuestion === questionsData.questions.length - 1 && (
-                        <div className="justify-end mr-7">
+                        <div className="justify-end mt-10 mr-7">
                             <button className='btn btn-primary my-3' type='submit' onClick={onSubmit}>
                                 Submit
                             </button>
                         </div>
                     )}
                 </div>
-                <div className='buttons flex mt-10 justify-end'>
+                <div className='buttons flex mt-10 content-center justify-end'>
                     {/* If only have one next button */}
                     {currentQuestion === 0 && (
                         
